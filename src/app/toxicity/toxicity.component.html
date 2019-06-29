@@ -1,0 +1,45 @@
+<div class="p-grid p-justify-center">
+    <div class="p-col-12 p-lg-8 p-sm-12 p-md-12">
+        <p-card header="Toxicity Predictor">
+            <div class="p-col-12 p-sm-12 p-md-12">
+                <h3>Enter your message</h3>
+                <textarea
+                    rows="5"
+                    [formControl]="message"
+                    cols="30"
+                    pInputTextarea
+                    autoResize="autoResize">
+                </textarea>
+                <p-message
+                    *ngIf="message.touched && message.errors?.required"
+                    severity="error"
+                    text="Field is required">
+                </p-message>
+
+            </div>
+            <div class="p-col-12 p-sm-12 p-md-12">
+                <button
+                    pButton
+                    (click)="check()"
+                    type="button"
+                    label="{{loading ? 'Loading' : 'Check'}}"
+                    class="ui-button-raised">
+                </button>
+            </div>
+            <div class="p-col-12 p-sm-12 p-md-12">
+                <p-chart
+                    *ngIf="data && !loading"
+                    type="radar"
+                    [data]="data"></p-chart>
+            </div>
+        </p-card>
+    </div>
+
+    <div class="p-col-12 footer">
+        <h5>
+            Made with
+            <span class="icon-heart">&hearts;</span>
+            by pj
+        </h5>
+    </div>
+</div>
